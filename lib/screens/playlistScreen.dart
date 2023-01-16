@@ -39,32 +39,51 @@ class PlaylistScreen extends StatelessWidget {
                 _PlaylistInformation(playlists: playlists),
                 SizedBox(height: 30),
                 _PlayorShuffleSwitch(),
-                ListView.builder(
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  itemCount: playlists.songs.length,
-                  itemBuilder: (context, index) {
-                    return ListTile(
-                      leading: Text(
-                        '${index + 1}',
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodyMedium!
-                            .copyWith(fontWeight: FontWeight.bold),
-                      ),
-                      title: Text(playlists.songs[index].title,
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyLarge!
-                              .copyWith(fontWeight: FontWeight.bold)),
-                    );
-                  },
-                )
+                _PlaylistSongs(playlists: playlists)
               ],
             ),
           ),
         ),
       ),
+    );
+  }
+}
+
+class _PlaylistSongs extends StatelessWidget {
+  const _PlaylistSongs({
+    Key? key,
+    required this.playlists,
+  }) : super(key: key);
+
+  final Playlist playlists;
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      shrinkWrap: true,
+      physics: NeverScrollableScrollPhysics(),
+      itemCount: playlists.songs.length,
+      itemBuilder: (context, index) {
+        return ListTile(
+          leading: Text(
+            '${index + 1}',
+            style: Theme.of(context)
+                .textTheme
+                .bodyMedium!
+                .copyWith(fontWeight: FontWeight.bold),
+          ),
+          title: Text(playlists.songs[index].title,
+              style: Theme.of(context)
+                  .textTheme
+                  .bodyLarge!
+                  .copyWith(fontWeight: FontWeight.bold)),
+          subtitle: Text('${playlists.songs[index].description} - 2:45'),
+          trailing: Icon(
+            Icons.more_vert,
+            color: Colors.white,
+          ),
+        );
+      },
     );
   }
 }

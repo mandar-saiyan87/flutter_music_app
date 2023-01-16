@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
           textTheme: Theme.of(context)
               .textTheme
               .apply(bodyColor: Colors.white, displayColor: Colors.white)),
-      home: PlaylistScreen(),
+      home: HomeScreen(),
       getPages: [
         GetPage(name: "/", page: () => const HomeScreen()),
         GetPage(name: "/song", page: () => const SongScreen()),
