@@ -18,11 +18,11 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      theme: ThemeData(textTheme: Theme.of(context).textTheme.apply(
-        bodyColor: Colors.white,
-        displayColor: Colors.white
-      )),
-      home: HomeScreen(),
+      theme: ThemeData(
+          textTheme: Theme.of(context)
+              .textTheme
+              .apply(bodyColor: Colors.white, displayColor: Colors.white)),
+      home: PlaylistScreen(),
       getPages: [
         GetPage(name: "/", page: () => const HomeScreen()),
         GetPage(name: "/song", page: () => const SongScreen()),
